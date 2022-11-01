@@ -129,7 +129,7 @@ const CoinsDetails = () => {
             >{`#${coin.market_cap_rank}`}
           </Badge>
 
-          <CustomBar curr={coin.market_data.current_price[currrency]} low={`${currencySymbol}${coin.market_data.low_24h[currrency]}`} high={`${currencySymbol}${coin.market_data.high_24h[currrency]}`} />
+          <CustomBar days={days} curr={Math.random()*100} low={`${currencySymbol}${coin.market_data.low_24h[currrency]}`} high={`${currencySymbol}${coin.market_data.high_24h[currrency]}`} />
         
           <Box w={'full'} p={'4'} >
             <Item title={'Market Cap'} value={`${currencySymbol}${coin.market_data.market_cap[currrency]}`} />
@@ -154,12 +154,12 @@ const Item=({title,value})=>(
   </HStack>
 )
 
-const CustomBar=({curr,low,high})=>(
+const CustomBar=({days,curr,low,high})=>(
   <VStack w={'full'} >
     <Progress  value={curr} colorScheme={'teal'} w={'full'} />
       <HStack justifyContent={'space-between'} w={'full'}> 
         <Badge children={low} colorScheme={'red'} />
-        <Text fontSize={'sm'} >24Hr</Text>
+        <Text fontSize={'sm'} >{days}</Text>
         <Badge children={high} colorScheme={'green'} />
       </HStack>
   </VStack>
